@@ -17,21 +17,21 @@ app.use('/cdn',express.static('public'));
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
-    res.locals.page_title = "OdO Refine | Daily Deals";
+    res.locals.page_title = "OdO Refined | Daily Deals";
     res.cookie('_indexName', process.env.DAILY_INDEX_NAME);
 
     res.render('index');
 });
 
 app.get('/clearance', (req, res) => {
-    res.locals.page_title = "OdO Refine | Clearance Deals";
+    res.locals.page_title = "OdO Refined | Clearance Deals";
     res.cookie('_indexName', process.env.CLEARANCE_INDEX_NAME);
 
     res.render('clearance');
 });
 
 app.get('/about', (req, res) => {
-    res.locals.page_title = "OdO Refine | About";
+    res.locals.page_title = "OdO Refined | About";
 
     res.render('about');
 });
