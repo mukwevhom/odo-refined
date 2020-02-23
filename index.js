@@ -30,6 +30,12 @@ app.get('/clearance', (req, res) => {
     res.render('clearance');
 });
 
+app.get('/about', (req, res) => {
+    res.locals.page_title = "OdO Refine | About";
+
+    res.render('about');
+});
+
 app.get('/index-daily', (req, res) => {
     index = client.initIndex(process.env.DAILY_INDEX_NAME);
 

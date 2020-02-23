@@ -160,3 +160,28 @@ section.section-wrapper {
     font-weight: 700;
     color: #ec2e5e;
 }
+
+@media (max-width:767px) {
+    .logo-wrapper {
+        margin: 0 auto;
+    }
+    .head-nav {
+        margin: 18px 0 0 !important;
+        text-align: center;
+    }
+    #searchFilter {
+        margin: 0 !important;
+    }
+    #sort-by {
+        margin-top: 18px;
+    }
+
+    #sort-by .ais-SortBy {
+        padding-left: 1rem;
+    }
+
+    #sort-by .ais-SortBy .ais-SortBy-select {
+        width:100%;
+        padding: 9px;
+    }
+}

@@ -1,0 +1,9 @@
+extends layout.pug
+
+block vars
+  - var bodyClass = 'about-page';
+
+block content
+    section.section-wrapper
+        .container
+            include:markdown-it ./../README.md
