@@ -4,7 +4,6 @@
   "description": "Onedayonly.co.za Refined",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
   "repository": {
@@ -27,6 +26,7 @@
     "fs": "0.0.1-security",
     "node-cron": "^2.0.3",
     "node-sass": "^4.13.1",
+    "numeral": "^2.0.6",
     "pug": "^2.0.4",
     "puppeteer": "^2.1.1"
   },

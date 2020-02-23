@@ -3,6 +3,7 @@ const scraper = require('./scraper');
 const cron = require("node-cron");
 const algoliasearch = require('algoliasearch');
 const sass = require('node-sass');
+const numeral = require('numeral');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -46,7 +47,7 @@ app.get('/index-daily', (req, res) => {
         index.clearObjects()
             .then(() => {
 
-                index.saveObjects(response, { autoGenerateObjectIDIfNotExist: true })
+                index.saveObjects(response.reverse(), { autoGenerateObjectIDIfNotExist: true })
                     .then(() => {
                         res.sendStatus(200);
                     }).catch(err => {
@@ -79,7 +80,7 @@ app.get('/index-clearance', (req, res) => {
         index.clearObjects()
             .then(() => {
 
-                index.saveObjects(response, { autoGenerateObjectIDIfNotExist: true })
+                index.saveObjects(response.reverse(), { autoGenerateObjectIDIfNotExist: true })
                     .then(() => {
                         res.sendStatus(200);
                     }).catch(err => {
@@ -99,4 +100,4 @@ app.get('/index-clearance', (req, res) => {
     console.log("running a task every minute");
 }); */
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT,() => console.log(`OdO Refined listening on port ${process.env.PORT}!`));

@@ -60,14 +60,14 @@ $(document).ready(() => {
                                     <a href="${ product.url }" target="_h">
                                         <img src="${ product.image }" alt="${ product.brand } - ${ product.name }" class="w-100" />
                                     </a>
-                                    ${ product.savings ? `<div class="product-savings position-absolute">${product.savings}</div>` : "" }
+                                    ${ product.savings ? `<div class="product-savings position-absolute">${product.savings.toString().includes("%") ? product.savings : "R" + numeral(product.savings).format('0,0')}</div>` : "" }
                                 </figure>
                                 <div class="product-info" >
                                     <a class="product-title" href="${ product.url }" target="_h">${product.brand} - 
                                         <span class="">${product.name}</span>
                                     </a>
                                     <div class="product-pricing ${product.soldout ? "soldout":""}">
-                                        ${product.retail ? `<span class="retail-pricing">${product.retail}</span>`:""} ${product.price} 
+                                        ${product.retail ? `<span class="retail-pricing">R${numeral(product.retail).format('0,0')}</span>`:""} R${numeral(product.price).format('0,0')} 
                                     </div>
                                     ${product.soldout ? `<div class="soldout-note">Sold Out</div>`:""} 
                                 </div>
