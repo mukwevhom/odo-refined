@@ -1,0 +1,11 @@
+- var bodyClass = '';
+block vars
+
+doctype html
+html(lang="en")
+    include includes/head.pug
+    body(class=bodyClass)
+        include sections/header.pug
+        block content
+        include sections/footer.pug
+        include includes/body-scripts.pug

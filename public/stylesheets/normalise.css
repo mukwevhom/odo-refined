@@ -1,0 +1,79 @@
+@import url(//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);
+@import url(https://mukwevhom.github.io/grid-bottom-spacing/grid-bottom-spacing.css);
+@import url(https://mukwevhom.bitbucket.io/fonts/fonts.css);
+
+*{margin:0;padding:0;font-family:'Calibre','Roboto',Arial,sans-serif;text-decoration:none;line-height: 1;}
+*:focus{outline:0;}
+html,body{width:100%;height:100%;}
+body{font-size:14px;background:#f4f4f4;}
+.row{margin:0;}
+
+:root{
+    --my-reusable-value: 20px;
+    --mb-white:#f0f0f9;
+    --mb-black:#1e1e1c;
+    --mb-yellow:#64643e;
+}
+
+.black-text {
+    color: var(--mb-black) !important;
+}
+
+.white-text,
+.white-text:hover,
+.white-text:focus {
+    color: var(--mb-white) !important;
+}
+
+.curr-page a{opacity: .4;}
+
+.margin{margin:var(--my-reusable-value);}
+.no-margin{margin:0;}
+
+.margin-top{margin-top:var(--my-reusable-value);}
+.no-margin-top{margin-top:0;}
+
+.margin-right{margin-right:var(--my-reusable-value);}
+.no-margin-right{margin-right:0;}
+
+.margin-bottom{margin-bottom:var(--my-reusable-value);}
+.no-margin-bottom{margin-bottom:0;}
+
+.margin-left{margin-left:var(--my-reusable-value);}
+.no-margin-left{margin-left:0;}
+
+.padding{padding: var(--my-reusable-value);}
+
+.padding-top{padding-top:var(--my-reusable-value);}
+.no-padding-top{padding-top:0px;}
+
+.padding-right{padding-right:var(--my-reusable-value);}
+.no-padding-right{padding-right:0px;}
+
+.padding-bottom{padding-bottom:var(--my-reusable-value);}
+.no-padding-bottom{padding-bottom:0px;}
+
+.padding-left{padding-left:var(--my-reusable-value);}
+.no-padding-left{padding-left:0px;}
+
+.border{border: 1px solid;}
+.no-border{border: none;}
+.border-top{border-top:1px solid;}
+.no-border-top{border-top:none;}
+.border-right{border-right:1px solid;}
+.no-border-right{border-right:none;}
+.border-bottom{border-bottom:1px solid;}
+.no-border-bottom{border-bottom: none;}
+.border-left{border-left:1px solid;}
+.no-border-left{border-left:none;}
+
+.float-left{float:left;}
+.float-right{float:right;}
+.float-none{float:none;}
+
+.inline-block{display: inline-block;}
+.display-block{display:block;}
+
+.line-height{line-height:1.3;}
+.no-list-style{list-style: none;}
+.no-text-decor,.no-text-decor:hover,.no-text-decor:focus {text-decoration: none;}
