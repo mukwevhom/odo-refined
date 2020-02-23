@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const client = algoliasearch(process.env.APP_ID, process.env.ADMIN_API_KEY);
-const index = client.initIndex(process.env.INDEX_NAME);
+let index = client.initIndex(process.env.INDEX_NAME);
 
 const app = express();
 
@@ -30,7 +30,8 @@ app.get('/clearance', (req, res) => {
 });
 
 app.get('/index-daily', (req, res) => {
-    const index = client.initIndex(process.env.DAILY_INDEX_NAME);
+    index = client.initIndex(process.env.DAILY_INDEX_NAME);
+
     let linkInfo = new Promise((resolve, reject) => {
         scraper.scraper("https://www.onedayonly.co.za/")
             .then(response => {
@@ -62,7 +63,8 @@ app.get('/index-daily', (req, res) => {
 });
 
 app.get('/index-clearance', (req, res) => {
-    const index = client.initIndex(process.env.CLEARANCE_INDEX_NAME);
+    index = client.initIndex(process.env.CLEARANCE_INDEX_NAME);
+
     let linkInfo = new Promise((resolve, reject) => {
         scraper.scraper("https://www.onedayonly.co.za/shop/bargain-bin.html")
             .then(response => {

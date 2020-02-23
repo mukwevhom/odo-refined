@@ -25,7 +25,7 @@ $(document).ready(() => {
                 showReset:false,
                 placeholder:'Search deals...',
                 cssClasses: {
-                    root:["search-wrapper", "mt-5", "px-3"],
+                    root:["search-wrapper", "px-3"],
                     form:["w-100", "d-flex"],
                     input:"inSearch"
                 }
@@ -33,12 +33,15 @@ $(document).ready(() => {
 
             let sortBy = instantsearch.widgets.sortBy({
                 container: '#sort-by',
+                cssClasses: {
+                    root:["pr-3", "h-100"]
+                },
                 items: [
-                    { label: 'Default', value: 'dev_ODO_Daily' },
-                    { label: 'Price (asc)', value: 'dev_ODO_Daily_price_asc' },
-                    { label: 'Price (desc)', value: 'dev_ODO_Daily_price_asc' },
-                    { label: 'Savings (asc)', value: 'dev_ODO_Daily_save_asc' },
-                    { label: 'Saving (desc)', value: 'dev_ODO_Daily_save_desc' },
+                    { label: 'Default', value: indexName },
+                    { label: 'Price (asc)', value: `${indexName}_price_asc` },
+                    { label: 'Price (desc)', value: `${indexName}_price_asc` },
+                    { label: 'Savings (asc)', value: `${indexName}_save_asc` },
+                    { label: 'Savings (desc)', value: `${indexName}_save_desc` },
                 ],
             });
     
