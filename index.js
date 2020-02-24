@@ -2,6 +2,7 @@ const express = require('express');
 const scraper = require('./scraper');
 const cron = require("node-cron");
 const algoliasearch = require('algoliasearch');
+const fetch = require('node-fetch');
 const { SitemapStream, streamToPromise } = require('sitemap');
 const { createGzip } = require('zlib');
 const dotenv = require('dotenv');
@@ -60,7 +61,7 @@ app.get('/sitemap.xml', function(req, res) {
         // cache the response
         streamToPromise(pipeline).then(sm => sitemap = sm);
         // stream the response
-        pipeline.pipe(res).on('error', (e) => {throw e});
+        pipeline.pipe(res).on('error', (e) => {throw e;});
     } catch (e) {
         res.status(500).end();
     }
@@ -132,8 +133,28 @@ app.get('/index-clearance', (req, res) => {
     });
 });
 
-/* cron.schedule("* * * * *", function() {
-    console.log("running a task every minute");
-}); */
+cron.schedule("2 * * * *", function() {
+    console.log("Running");
+    fetch(`${process.env.SITE_DOMAIN}/index-daily`)
+        .then(response => {
+            if(response.status === 200) {
+
+                console.log("Daily Deals Indexing Complete");
+
+                fetch(`${process.env.SITE_DOMAIN}/index-clearance`)
+                    .then(response => {
+                        if(response.status === 200) {
+                            console.log("Clearance Deals Indexing Complete");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Clearance: ",error);
+                    });
+            }
+        })
+        .catch(error => {
+            console.error("Daily: ",error);
+        });
+});
 
 app.listen(process.env.PORT,() => console.log(`OdO Refined listening on port ${process.env.PORT}!`));
