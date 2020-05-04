@@ -132,8 +132,8 @@ app.get('/index-clearance', (req, res) => {
     });
 });
 
-cron.schedule("2 * * * *", function() {
-    
+cron.schedule("2 0 * * *", () => {
+    // Cron runs every day at 00:12, after Lockdown , 00:02, 13:02, 14:02
     fetch(`${process.env.SITE_DOMAIN}/index-daily`)
         .then(response => {
             if(response.status === 200) {
@@ -154,6 +154,8 @@ cron.schedule("2 * * * *", function() {
         .catch(error => {
             console.error("Daily: ",error);
         });
+}, {
+    timezone: "Africa/Johannesburg"
 });
 
 app.listen(process.env.PORT,() => console.log(`OdO Refined listening on port ${process.env.PORT}!`));
