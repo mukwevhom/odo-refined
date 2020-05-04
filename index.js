@@ -142,7 +142,7 @@ app.get('/index-clearance', (req, res) => {
 });
 
 cron.schedule("2 * * * *", function() {
-    console.log("Running");
+    
     fetch(`${process.env.SITE_DOMAIN}/index-daily`)
         .then(response => {
             if(response.status === 200) {
