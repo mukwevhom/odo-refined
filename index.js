@@ -76,7 +76,6 @@ app.get('/index-daily', (req, res) => {
                 resolve(response);
             })
             .catch(error => {
-                console.log(error);
                 reject(error);
             });
     });
@@ -89,17 +88,14 @@ app.get('/index-daily', (req, res) => {
                     .then(() => {
                         res.sendStatus(200);
                     }).catch(err => {
-                        console.log("1", err);
                         res.status(500).send(err);
                     });
 
             }).catch(err => {
-                console.log("2", err);
                 res.status(500).send(err);
             });
         // res.status(200).type('json').send(response);
     }).catch(err => {
-        console.log("3", err);
         res.status(500).send(err);
     });
 });
@@ -113,7 +109,6 @@ app.get('/index-clearance', (req, res) => {
                 resolve(response);
             })
             .catch(error => {
-                console.log(error);
                 reject(error);
             });
     });
@@ -126,17 +121,13 @@ app.get('/index-clearance', (req, res) => {
                     .then(() => {
                         res.sendStatus(200);
                     }).catch(err => {
-                        console.log("1", err);
                         res.status(500).send(err);
                     });
 
             }).catch(err => {
-                console.log("2", err);
                 res.status(500).send(err);
             });
-        // res.status(200).type('json').send(response);
     }).catch(err => {
-        console.log("3", err);
         res.status(500).send(err);
     });
 });
