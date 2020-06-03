@@ -17,7 +17,7 @@ const scraper = async(link_url) => {
     await page.waitFor(1000);
 
     result = await page.evaluate(() => {
-        return Array.from(document.getElementsByClassName("product_block"))
+        return Array.from(document.querySelectorAll(".product_block, .shop_products>.block_wrapper:not(.with_logo)"))
             .map(product => ({
                 brand: product.querySelector('.titles .brand') ? product.querySelector('.titles .brand').textContent : "",
                 name: product.querySelector('.titles .name') ? product.querySelector('.titles .name').textContent : "",
