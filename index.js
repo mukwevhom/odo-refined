@@ -132,7 +132,7 @@ app.get('/index-clearance', (req, res) => {
     });
 });
 
-cron.schedule("02 00 * * *", () => {
+cron.schedule("02 04 * * *", () => {
     // Cron runs every day at 00:12, after Lockdown , 00:02, 13:02, 14:02
     fetch(`${process.env.SITE_DOMAIN}/index-daily`)
         .then(response => {
