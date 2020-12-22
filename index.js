@@ -104,7 +104,7 @@ app.get('/index-clearance', (req, res) => {
     index = client.initIndex(process.env.CLEARANCE_INDEX_NAME);
 
     let linkInfo = new Promise((resolve, reject) => {
-        scraper.scraper("https://www.onedayonly.co.za/shop/bargain-bin.html")
+        scraper.scraper("https://www.onedayonly.co.za/clearance-sale")
             .then(response => {
                 resolve(response);
             })

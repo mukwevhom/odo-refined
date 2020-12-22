@@ -63,7 +63,7 @@ $(document).ready(() => {
                                     ${ product.savings ? `<div class="product-savings position-absolute">${product.savings.toString().includes("%") ? product.savings : "R" + numeral(product.savings).format('0,0')}</div>` : "" }
                                 </figure>
                                 <div class="product-info" >
-                                    <a class="product-title" href="${ product.url }" target="_h">${product.brand} - 
+                                    <a class="product-title" href="https://www.onedayonly.co.za${ product.url }" target="_h">${product.brand} - 
                                         <span class="">${product.name}</span>
                                     </a>
                                     <div class="product-pricing ${product.soldout ? "soldout":""}">
