@@ -57,7 +57,7 @@ $(document).ready(() => {
                         return `
                             <div class="product-wrapper">
                                 <figure class="product-image position-relative">
-                                    <a href="${ product.url }" target="_h">
+                                    <a href="https://www.onedayonly.co.za${ product.url }" target="_h">
                                         <img src="${ product.image }" alt="${ product.brand } - ${ product.name }" class="w-100" />
                                     </a>
                                     ${ product.savings ? `<div class="product-savings position-absolute">${product.savings.toString().includes("%") ? product.savings : "R" + numeral(product.savings).format('0,0')}</div>` : "" }
