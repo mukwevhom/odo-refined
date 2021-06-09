@@ -37,5 +37,8 @@
   },
   "engines": {
     "node": "12.16.1"
+  },
+  "devDependencies": {
+    "meow": "^10.0.1"
   }
 }
