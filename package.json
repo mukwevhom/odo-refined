@@ -35,9 +35,6 @@
     "sitemap": "^7.0.0",
     "zlib": "^1.0.5"
   },
-  "engines": {
-    "node": "12.16.1"
-  },
   "devDependencies": {
     "meow": "^10.0.1"
   }
