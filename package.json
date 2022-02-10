@@ -27,7 +27,7 @@
     "jstransformer-markdown-it": "^2.1.0",
     "node-cron": "^3.0.0",
     "node-fetch": "^2.6.1",
-    "node-sass": "^6.0.0",
+    "node-sass": "^7.0.0",
     "nodemon": "^2.0.7",
     "numeral": "^2.0.6",
     "pug": "^3.0.2",
