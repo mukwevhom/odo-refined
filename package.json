@@ -26,7 +26,7 @@
     "fs": "0.0.1-security",
     "jstransformer-markdown-it": "^2.1.0",
     "node-cron": "^3.0.0",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "node-sass": "^6.0.0",
     "nodemon": "^2.0.7",
     "numeral": "^2.0.6",
