@@ -1,6 +1,6 @@
 {
   "name": "odo-refined",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Onedayonly.co.za Refined",
   "main": "index.js",
   "scripts": {
@@ -20,9 +20,9 @@
   },
   "homepage": "https://github.com/mukwevhom/odo-refined#readme",
   "dependencies": {
-    "algoliasearch": "^4.9.1",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
+    "algoliasearch": "^4.13.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
     "fs": "0.0.1-security",
     "jstransformer-markdown-it": "^2.1.0",
     "node-cron": "^3.0.0",
@@ -31,11 +31,8 @@
     "nodemon": "^2.0.18",
     "numeral": "^2.0.6",
     "pug": "^3.0.2",
-    "puppeteer": "^10.0.0",
-    "sitemap": "^7.0.0",
+    "puppeteer": "^13.5.2",
+    "sitemap": "^7.1.1",
     "zlib": "^1.0.5"
-  },
-  "devDependencies": {
-    "meow": "^10.0.1"
   }
 }

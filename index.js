@@ -1,8 +1,6 @@
 const express = require('express');
 const scraper = require('./scraper');
-const cron = require("node-cron");
 const algoliasearch = require('algoliasearch');
-const fetch = require('node-fetch');
 const { SitemapStream, streamToPromise } = require('sitemap');
 const { createGzip } = require('zlib');
 const dotenv = require('dotenv');
@@ -130,32 +128,6 @@ app.get('/index-clearance', (req, res) => {
     }).catch(err => {
         res.status(500).send(err);
     });
-});
-
-cron.schedule("02 04 * * *", () => {
-    // Cron runs every day at 00:12, after Lockdown , 00:02, 13:02, 14:02
-    fetch(`${process.env.SITE_DOMAIN}/index-daily`)
-        .then(response => {
-            if(response.status === 200) {
-
-                console.log("Daily Deals Indexing Complete");
-
-                fetch(`${process.env.SITE_DOMAIN}/index-clearance`)
-                    .then(response => {
-                        if(response.status === 200) {
-                            console.log("Clearance Deals Indexing Complete");
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Clearance: ",error);
-                    });
-            }
-        })
-        .catch(error => {
-            console.error("Daily: ",error);
-        });
-}, {
-    timezone: "Africa/Johannesburg"
 });
 
 app.listen(process.env.PORT,() => console.log(`OdO Refined listening on port ${process.env.PORT}!`));
