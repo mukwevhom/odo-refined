@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors')
 const helmet = require('helmet');
 
 dotenv.config();
@@ -9,7 +10,8 @@ const app = express();
 const pagesRoutes = require('./routes/pages-routes');
 const indexRoutes = require('./routes/index-routes');
 
-app.use(helmet())
+app.use(helmet({ contentSecurityPolicy: false,crossOriginEmbedderPolicy: false}))
+app.use(cors())
 app.use('/cdn',express.static('public'));
 app.set('view engine', 'pug');
 
