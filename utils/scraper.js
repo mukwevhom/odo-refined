@@ -5,6 +5,7 @@ const scraper = async(link_url) => {
     let result;
 
     const browser = await puppeteer.launch({
+        headless: 'new',
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
