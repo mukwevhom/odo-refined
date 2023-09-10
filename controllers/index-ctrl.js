@@ -5,7 +5,7 @@ const client = algoliasearch(process.env.APP_ID, process.env.ADMIN_API_KEY);
 
 let index = client.initIndex(process.env.INDEX_NAME);
 
-const indexDaily = (req, res) => {
+const indexDaily = (req, res, next) => {
     index = client.initIndex(process.env.DAILY_INDEX_NAME);
 
     let linkInfo = new Promise((resolve, reject) => {
@@ -26,18 +26,18 @@ const indexDaily = (req, res) => {
                     .then(() => {
                         res.sendStatus(200);
                     }).catch(err => {
-                        res.status(500).send(err);
+                        next(err);
                     });
 
             }).catch(err => {
-                res.status(500).send(err);
+                next(err);
             });
     }).catch(err => {
-        res.status(500).send(err);
+        next(err);
     });
 }
 
-const indexClearance = (req, res) => {
+const indexClearance = (req, res, next) => {
     index = client.initIndex(process.env.CLEARANCE_INDEX_NAME);
 
     let linkInfo = new Promise((resolve, reject) => {
@@ -58,14 +58,14 @@ const indexClearance = (req, res) => {
                     .then(() => {
                         res.sendStatus(200);
                     }).catch(err => {
-                        res.status(500).send(err);
+                        next(err);
                     });
 
             }).catch(err => {
-                res.status(500).send(err);
+                next(err);
             });
     }).catch(err => {
-        res.status(500).send(err);
+        next(err);
     });
 }
 
