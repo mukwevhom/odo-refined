@@ -18,4 +18,13 @@ app.set('view engine', 'pug');
 app.use('/', pagesRoutes);
 app.use('/index', indexRoutes);
 
+app.use(function (err, req, res, next) {
+    res.status(err.status || 500).send({
+        error: {
+            status: err.status || 500,
+            message: err.message || "Internal Server Error"
+        }
+    });
+});
+
 app.listen(process.env.PORT,() => console.log(`OdO Refined listening on port ${process.env.PORT}!`));

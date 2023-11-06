@@ -27,20 +27,33 @@ const indexClearance = async (req, res) => {
     try {
         let index = client.initIndex(process.env.CLEARANCE_INDEX_NAME);
 
-        let linkInfo = await scraper.scraper("https://www.onedayonly.co.za/clearance-sale")
+    let linkInfo = new Promise((resolve, reject) => {
+        scraper.scraper("https://www.onedayonly.co.za/clearance-sale")
+            .then(response => {
+                resolve(response);
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
 
-        if (linkInfo) {
-            await index.clearObjects()
+    linkInfo.then(response => {
+        index.clearObjects()
+            .then(() => {
 
-            await index.saveObjects(linkInfo.reverse(), { autoGenerateObjectIDIfNotExist: true })
-            res.sendStatus(200)
-        } else {
-            res.status(500).send("Something went wrong");
-        }
-    } catch (err) {
-        console.log(err)
+                index.saveObjects(response.reverse(), { autoGenerateObjectIDIfNotExist: true })
+                    .then(() => {
+                        res.sendStatus(200);
+                    }).catch(err => {
+                        res.status(500).send(err);
+                    });
+
+            }).catch(err => {
+                res.status(500).send(err);
+            });
+    }).catch(err => {
         res.status(500).send(err);
-    }
+    });
 }
 
 module.exports = {
