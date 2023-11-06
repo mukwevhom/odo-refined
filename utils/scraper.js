@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const numeral = require('numeral');
 
-const scraper = async(link_url) => {
+const scraper = async (link_url) => {
     let result;
 
     const browser = await puppeteer.launch({
