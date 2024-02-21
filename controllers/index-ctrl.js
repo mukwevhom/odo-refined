@@ -3,7 +3,7 @@ const scraper = require('../utils/scraper');
 
 const client = algoliasearch(process.env.APP_ID, process.env.ADMIN_API_KEY);
 
-const indexDaily = async (req, res) => {
+const indexDaily = async (req, res, next) => {
     try {
         let index = client.initIndex(process.env.DAILY_INDEX_NAME);
 

@@ -14,9 +14,23 @@ const scraper = async (link_url) => {
         });
         const page = await browser.newPage();
 
-        await page.goto(link_url);
+        await page.goto(link_url, { waitUntil: 'networkidle2' });
         await page.addScriptTag({url: 'https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js'});
-        await page.waitForTimeout(10000);
+
+       /* const elements = await page.$$('.measure-this');
+        let results = [];
+
+        for(let element of elements) {
+            const brand = await element.$eval('a div h2:first-of-type', node => node.textContent);
+            const name = await element.$eval('a div h2:last-of-type', node => node.textContent);
+            const retail = await element.$eval(':scope div[role=group]:has(> h2[aria-label]) h2:last-of-type', node => Number(node.textContent.replace("R","").replace(/(\r\n|\n|\r|,)/gm,"")));
+            const price = await element.$eval(':scope div[role=group]:has(> h2[aria-label]) h2.highlightOnHover:first-of-type', node => Number(node.textContent.replace("R","").replace(/(\r\n|\n|\r|,)/gm,"")));
+            const savings = await element.$eval('.savings-badge span:last-of-type', node => node.textContent);
+            const image = await element.$eval('.image', node => node.src);
+            const url = await element.$eval('a', node => node.href);
+
+            results.push({brand, name, retail,price, savings, image, url});
+        } */
 
         result = await page.evaluate(() => {
             return Array.from(document.querySelectorAll(".measure-this"))
