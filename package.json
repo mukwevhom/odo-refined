@@ -20,10 +20,10 @@
   },
   "homepage": "https://github.com/mukwevhom/odo-refined#readme",
   "dependencies": {
-    "algoliasearch": "^4.22.1",
+    "algoliasearch": "^4.23.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.18.2",
+    "express": "^4.19.2",
     "fs": "^0.0.2",
     "helmet": "^7.1.0",
     "jstransformer-markdown-it": "3.0.0",
@@ -32,7 +32,7 @@
     "node-sass": "^9.0.0",
     "numeral": "^2.0.6",
     "pug": "^3.0.2",
-    "puppeteer": "^22.1.0",
+    "puppeteer": "^22.8.0",
     "sitemap": "^7.1.1",
     "zlib": "^1.0.5"
   }
