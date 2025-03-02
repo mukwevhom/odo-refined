@@ -1,18 +1,16 @@
-const algoliasearch = require('algoliasearch');
-const scraper = require('../utils/scraper');
+import { algoliasearch } from 'algoliasearch';
+import { scraper } from '../utils/scraper.js';
 
 const client = algoliasearch(process.env.APP_ID, process.env.ADMIN_API_KEY);
 
 const indexDaily = async (req, res, next) => {
     try {
-        let index = client.initIndex(process.env.DAILY_INDEX_NAME);
-
-        let linkInfo = await scraper.scraper("https://www.onedayonly.co.za/")
+        let linkInfo = await scraper("https://www.onedayonly.co.za/")
 
         if (linkInfo) {
-            await index.clearObjects()
+            await client.clearObjects({ indexName: process.env.DAILY_INDEX_NAME })
 
-            await index.saveObjects(linkInfo.reverse(), { autoGenerateObjectIDIfNotExist: true })
+            await client.saveObjects({ indexName: process.env.DAILY_INDEX_NAME, objects: linkInfo.toReversed()}, {autoGenerateObjectIDIfNotExist: true })
 
             res.sendStatus(200)
         } else {
@@ -25,14 +23,12 @@ const indexDaily = async (req, res, next) => {
 
 const indexClearance = async (req, res, next) => {
     try {
-        let index = client.initIndex(process.env.CLEARANCE_INDEX_NAME);
-        
-        let linkInfo = await scraper.scraper("https://www.onedayonly.co.za/clearance-sale")
+        let linkInfo = await scraper("https://www.onedayonly.co.za/clearance-sale")
 
         if (linkInfo) {
-            await index.clearObjects()
+            await client.clearObjects({ indexName: process.env.CLEARANCE_INDEX_NAME })
 
-            await index.saveObjects(linkInfo.reverse(), { autoGenerateObjectIDIfNotExist: true })
+            await client.saveObjects({ indexName: process.env.CLEARANCE_INDEX_NAME, objects: linkInfo.toReversed()}, { autoGenerateObjectIDIfNotExist: true })
 
             res.sendStatus(200)
         } else {
@@ -43,7 +39,7 @@ const indexClearance = async (req, res, next) => {
     };
 }
 
-module.exports = {
+export {
     indexDaily,
     indexClearance
 }
