@@ -7,7 +7,7 @@ const indexDaily = async (req, res, next) => {
     try {
         let linkInfo = await scraper("https://www.onedayonly.co.za/")
 
-        if (linkInfo) {
+        if (Array.isArray(linkInfo) && linkInfo.length > 0) {
             await client.clearObjects({ indexName: process.env.DAILY_INDEX_NAME })
 
             await client.saveObjects({ indexName: process.env.DAILY_INDEX_NAME, objects: linkInfo.toReversed()}, {autoGenerateObjectIDIfNotExist: true })
@@ -25,7 +25,7 @@ const indexClearance = async (req, res, next) => {
     try {
         let linkInfo = await scraper("https://www.onedayonly.co.za/clearance-sale")
 
-        if (linkInfo) {
+        if (Array.isArray(linkInfo) && linkInfo.length > 0) {
             await client.clearObjects({ indexName: process.env.CLEARANCE_INDEX_NAME })
 
             await client.saveObjects({ indexName: process.env.CLEARANCE_INDEX_NAME, objects: linkInfo.toReversed()}, { autoGenerateObjectIDIfNotExist: true })
